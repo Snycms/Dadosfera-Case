@@ -25,12 +25,12 @@
 Em seguida, foram unidos todos os arquivos em 1 só, para facilitar o carregamento e a utilização, utilizando o código a seguir:
 
 ```
-awk '(NR == 1) || (FNR > 1)' ./resources/*.csv > ./resources/final/tide_data.csv
+awk '(NR == 1) || (FNR > 1)' ./resources/Tides/*.csv > ./resources/files/final/tide_data.csv
 ```
 
 Feito importamos o dado para uma tabela do BigQuery
 ```
-gsutil cp ./resources/final/tide_data.csv gs://case-estagio/dadosfera/
+gsutil cp ./resources/files/final/tide_data.csv gs://case-estagio/dadosfera/
 ```
 Depois importamos para uma tabela no BigQuery
 
@@ -53,7 +53,7 @@ Waves table
  <h2 id="queries">Queries</h2>
  As queries abaixo foram utilizadas para responder as questões 1 e 2
 
-[Query 1 - Lowest Temperature](queries/lowest_temperature_per_bouys.sql)
+<a href="queries/lowest_temperature_per_bouys.sql">Query 1 - Lowest Temperature</a>
 
 [Query 2 - Biggest Water Level](queries/lat_long_biggest_water_level.sql)
 
@@ -63,12 +63,13 @@ Sendo os resultados encontrados mostrados abaixo:
 
 ![](Images/query_biggest_water_level.png)
 
-```
+<code>
 O maior nível de água acontece na latitude = `53.585` e longitude = `-6.1081` no mês de Fevereiro.
-``` 
+</code>
+ 
   <h4 id="resultados-2">Resultados Questões 2</h4>
 
-![](Images/query_lowest_temperature.png)
+<img src="Images/query_lowest_temperature.png" alt="">
 
 ```
 A menor temperatura para cada uma das regiões é mostrada na imagem acima, e todas elas são no mês de Agosto.
