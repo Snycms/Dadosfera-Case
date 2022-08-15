@@ -2,7 +2,7 @@ WITH  max_watter_level AS (
     SELECT 
         MAX(water_level_lat) AS max_watter_level
     FROM `case-estagio.dadosfera.tide_data`
-    WHERE IS_NAN(water_level_lat) = false 
+    WHERE IS_NAN(water_level_lat) = false /* Alguns registros não possuiam o valor, por isso removemos os Not a Number (NaN)*/   
     )
 SELECT 
     latitude,
