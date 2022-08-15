@@ -26,21 +26,21 @@
 Em seguida, foram unidos todos os arquivos em 1 só, para facilitar o carregamento e a utilização, utilizando o código a seguir:
 
 ```
-awk '(NR == 1) || (FNR > 1)' ./resources/*.csv > ./resources/final/all_tide_data.csv
+awk '(NR == 1) || (FNR > 1)' ./resources/*.csv > ./resources/final/tide_data.csv
 ```
 
 Feito importamos o dado para uma tabela do BigQuery
 ```
-gsutil cp ./resources/final/all_tide_data.csv gs://case-estagio/dadosfera/
+gsutil cp ./resources/final/tide_data.csv gs://case-estagio/dadosfera/
 ```
 Depois importamos para uma tabela no BigQuery
 
 ```
-bq load --source_format=CSV --skip_leading_rows=1 --replace=true dadosfera.all_tide_data gs://case-estagio/dadosfera/all_tide_data.csv
+bq load --source_format=CSV --skip_leading_rows=1 --replace=true dadosfera.tide_data gs://case-estagio/dadosfera/tide_data.csv
 ```
 
 Após os dados carregados como mostrado na imagem abaixo:
-![](images/tide_data.png)
+![](Images/tide_data.png)
 
  <h2 id="queries">Queries</h2>
  As queries abaixo foram utilizadas para responder as questões 1 e 2
