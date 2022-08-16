@@ -1,82 +1,102 @@
-# **Solução do case de estágio** 
+<! doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title> Analisys.html</title>
+  </head>
+  
+  
+ <body>
 
+  <h1>**Solução do case de estágio**</h1> 
 
-# Index
- 1. [Visão Geral](#visao-geral)<BR>
- 2. [Modelagem Solução](#modelagem-solucao)<br> 
- 3. [Desenvolvimento](#desenvolvimento)<br> 
- 3.1. [Preparaçao dos dados](#preparacao)<br> 
- 3.2. [Queries](#queries)<br> 
- 3.3  [Wave lengh Correlation](#correlation)<br> 
- 4. [Item Bonus](#bonus)<br> 
+ 
+ 1. <a href="#visao-geral">Visão Geral</a><BR>
+
+ 2. <a href = "#modelagem-solucao"> Preparação dos dados</a><br> 
+ 3. <a href = "#desenvolvimento"> Desenvolvimento </a><br> 
+ 3.1.<a href = "#preparacao">Preparação dos dados</a><br> 
+ 3.2.<a href = "#queries">Queries</a><br> 
+ 3.3 <a href = "#correlation">Wave lengh Correlation</a><br> 
 
  <h1 id="visao-geral">Visão Geral</h1>
 
  <h1 id="preparacao-dados">Preparação dos dados</h1>
 
- Primeiro foi feito o download de todos os arquivos e eles foram salvos nas seguintes pastas
- ```
+ Primeiro foi feito o download de todos os arquivos e eles foram salvos nas seguintes pastas <br>
+<br>
+ <code>
  ./resources/tides*
  ./resources/waves*
-```
+</code>
+<br>
+<br>
 * Nota: Os arquivos .csv foram adicionados no .gitignore para evitar o envio para o GitHub.
-
+<br><br>
 
 Em seguida, foram unidos todos os arquivos em 1 só, para facilitar o carregamento e a utilização, utilizando o código a seguir:
-
-```
+<br><br>
+<code>
 awk '(NR == 1) || (FNR > 1)' ./resources/Tides/*.csv > ./resources/files/final/tide_data.csv
-```
+</code>
+<br><br>
 
-Feito importamos o dado para uma tabela do BigQuery
-```
+Feito isso,  importamos os dados para uma tabela do BigQuery<br><br>
+<code>
 gsutil cp ./resources/files/final/tide_data.csv gs://case-estagio/dadosfera/
-```
-Depois importamos para uma tabela no BigQuery
+</code><br><br>
+Depois importamos para uma tabela no BigQuery<br><br>
 
-```
+<code>
 bq load --source_format=CSV --skip_leading_rows=1 --replace=true dadosfera.tide_data gs://case-estagio/dadosfera/tide_data.csv
-```
-* O mesmo procedimento foi realizado para os dados de waves
+</code><br><br>
+* O mesmo procedimento foi realizado para os dados de waves<br><br>
 
 Após os dados carregados, iremos utilizar as tabelas para realização das consultas SQL, como mostrado na imagem abaixo:
-![](Images/tide_data.png)
+<br><br><img src="Images/tide_data.png" alt="">![](Images/tide_data.png)
 Tide table
 
 ![](Images/waves_data.png)
 
 Waves table
 
- <h1 id="desenvolvimento">Desenvolvimento</h1>
+<br><br> <h1 id="desenvolvimento">Desenvolvimento</h1>
  
 
- <h2 id="queries">Queries</h2>
- As queries abaixo foram utilizadas para responder as questões 1 e 2
+<br><br><h2 id="queries">Queries</h2>
+<br><br>As queries abaixo foram utilizadas para responder as questões 1 e 2
 
-<a href="queries/lowest_temperature_per_bouys.sql">Query 1 - Lowest Temperature</a>
+<br><br><a href="queries/lowest_temperature_per_bouys.sql">Query 1 - Lowest Temperature</a>
 
-[Query 2 - Biggest Water Level](queries/lat_long_biggest_water_level.sql)
+<br><br>[Query 2 - Biggest Water Level](queries/lat_long_biggest_water_level.sql)
 
 
-Sendo os resultados encontrados mostrados abaixo:
- <h4 id="resultados-1">Resultados Questões 1</h4>
+<br><br>Sendo os resultados encontrados mostrados abaixo:
+<br><br><h4 id="resultados-1">Resultados Questões 1</h4>
 
-![](Images/query_biggest_water_level.png)
+<br><br><img src="Images/query_biggest_water_level.png" alt="">
 
-<code>
+<br><br><code>
 O maior nível de água acontece na latitude = `53.585` e longitude = `-6.1081` no mês de Fevereiro.
 </code>
- 
+<br><br> 
   <h4 id="resultados-2">Resultados Questões 2</h4>
-
+  <br><br>
 <img src="Images/query_lowest_temperature.png" alt=""> <br><br>
 
-
+<br><br>
 <code>
 >A menor temperatura para cada uma das regiões é mostrada na imagem acima, e todas elas são no mês de Agosto.
 </code>
-
+<br><br>
  
- <h2 id="correlation">Correlação</h2>
+ <h2 id="correlation">Correlação</h2><br><br>
+ Finalizando os quesitos básicos, faremos a análise de correlação de Pearson para dados contínuos. Como muitos valores são NaN, faremos a análise apenas para a estação AMETS Berth A Wave Buoy, que contém um conjunto de dados robusto e completo para o cálculo, como mostrado no notebook abaixo.
+ <br><br>
 
- <h1 id="bonus">Bonus</h1>
+ [notebook_correlação](notebooks/case_dadosfera.ipynb).<br><br>
+ 
+ <img src="Images/Images/correlation.png" alt=""><br><br>
+ <code>
+ Após o cálculo de correlação, podemos ver que o Coeficiente de Pearson tem valor de 0.741 demonstrando uma forte correlação positiva entre a altura das ondas e a temperatura do mar. Dessa forma, quanto maior a temperatura do mar, maior será a altura das ondas.
+ </code><br><br>

@@ -78,7 +78,17 @@ A menor temperatura para cada uma das regiões é mostrada na imagem acima, e to
  
  <h2 id="correlation">Correlação</h2>
 
- Finalizando os quesitos básicos, faremos a análise de correlação de Pearson para dados contínuos. Como muitos valores são NaN, faremos a análise apenas para a estação AMETS Berth A Wave Buoy, que contém um conjunto de dados robusto e completo para o cálculo, como mostrado no notebook abaixo.
+ Finalizando os quesitos básicos, faremos a análise de correlação entre a altura das ondas e temperatura do mar. 
+ 
+ 
+ Existem duas possibilidades para analisar a correlação entre duas variáveis: o teste de Spearman, usado para variáveia discretas e o teste de Pearson usado para variáveis contínuas. 
+
+ Os dados utilizado para a análise são contínuos, portanto o teste de Pearson é o ideal para indicar como a altura das ondas e a temperatura do mar estão relacionadas.
+ 
+ Como muitos valores são NaN, faremos a análise apenas para a estação AMETS Berth A Wave Buoy, que contém um conjunto de dados robusto e completo para o cálculo, como mostrado no notebook abaixo.
+
+ 
+
 
 
 [notebook_correlação](notebooks/case_dadosfera.ipynb).
