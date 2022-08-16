@@ -28,7 +28,7 @@ Em seguida, foram unidos todos os arquivos em 1 só, para facilitar o carregamen
 awk '(NR == 1) || (FNR > 1)' ./resources/Tides/*.csv > ./resources/files/final/tide_data.csv
 ```
 
-Feito isso, importamos o dado para a CloudStorage
+Feito isso, importamos os dados para a CloudStorage
 ```
 gsutil cp ./resources/files/final/tide_data.csv gs://case-estagio/dadosfera/
 ```
