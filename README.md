@@ -81,6 +81,6 @@ A menor temperatura para cada uma das regiões é mostrada na imagem acima, e to
  Finalizando os quesitos básicos, faremos a análise de correlação de Pearson para dados contínuos. Como muitos valores são NaN, faremos a análise apenas para a estação AMETS Berth A Wave Buoy, que contém um conjunto de dados robusto e completo para o cálculo, como mostrado no notebook abaixo.
 
 
-[notebook](notebooks/case_dadosfera.ipynb).
+[notebook_correlação](notebooks/case_dadosfera.ipynb).
 
 Após o cálculo de correlação, podemos ver que o Coeficiente de Pearson tem valor de 0.741 demonstrando uma forte correlação positiva entre a altura das ondas e a temperatura do mar. Dessa forma, quanto maior a temperatura do mar, maior será a altura das ondas.
