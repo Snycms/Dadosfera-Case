@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>matplotlib demo</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="Analisys_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Analisys_files/libs/quarto-html/quarto.js"></script>
+<script src="Analisys_files/libs/quarto-html/popper.min.js"></script>
+<script src="Analisys_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Analisys_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Analisys_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Analisys_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Analisys_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Analisys_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Analisys_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">matplotlib demo</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="solução-do-case-de-estágio" class="level1">
+<h1><em>Solução do case de estágio</em></h1>
+</section>
+<section id="index" class="level1">
+<h1>Index</h1>
+<ol type="1">
+<li><a href="#visao-geral">Visão Geral</a></li>
+<li><a href="#modelagem-solucao">Modelagem Solução</a></li>
+<li><a href="#desenvolvimento">Desenvolvimento</a><br> 3.1. <a href="#preparacao">Preparaçao dos dados</a><br> 3.2. <a href="#queries">Queries</a><br> 3.3 <a href="#correlation">Wave lengh Correlation</a></li>
+</ol>
+<h1 id="visao-geral">
+Visão Geral
+</h1>
+<h1 id="preparacao-dados">
+Preparação dos dados
+</h1>
+<p>Primeiro foi feito o download de todos os arquivos e eles foram salvos nas seguintes pastas</p>
+<p>./resources/tides<em> ./resources/waves</em></p>
+<ul>
+<li>Nota: Os arquivos .csv foram adicionados no .gitignore para evitar o envio para o GitHub.</li>
+</ul>
+<p>Em seguida, foram unidos todos os arquivos em 1 só, para facilitar o carregamento e a utilização, utilizando o código a seguir:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'(NR == 1) || (FNR &gt; 1)'</span> ./resources/Tides/<span class="pp">*</span>.csv <span class="op">&gt;</span> ./resources/files/final/tide_data.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Feito importamos o dado para uma tabela do BigQuery</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gsutil</span> cp ./resources/files/final/tide_data.csv gs://case-estagio/dadosfera/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Depois importamos para uma tabela no BigQuery</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bq</span> load <span class="at">--source_format</span><span class="op">=</span>CSV <span class="at">--skip_leading_rows</span><span class="op">=</span>1 <span class="at">--replace</span><span class="op">=</span>true dadosfera.tide_data gs://case-estagio/dadosfera/tide_data.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>O mesmo procedimento foi realizado para os dados de waves</li>
+</ul>
+<p>Após os dados carregados, iremos utilizar as tabelas para realização das consultas SQL, como mostrado na imagem abaixo: <img src="Images/tide_data.png" class="img-fluid"> Tide table</p>
+<p><img src="Images/waves_data.png" class="img-fluid"></p>
+<p>Waves table</p>
+<h1 id="desenvolvimento">
+Desenvolvimento
+</h1>
+<h2 id="queries" class="anchored" data-anchor-id="index">
+Queries
+</h2>
+<p>As queries abaixo foram utilizadas para responder as questões 1 e 2</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">WITH</span>  min_temperature_per_station AS <span class="er">(</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">SELECT</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="ex">MIN</span><span class="er">(</span><span class="ex">sea_temperature</span><span class="kw">)</span> <span class="ex">AS</span> min_temperature,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="ex">station_id</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">FROM</span> <span class="kw">`</span><span class="ex">case-estagio.dadosfera.waves_data</span><span class="kw">`</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">GROUP</span> BY station_id</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">)</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">SELECT</span> </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">wave_data.station_id,</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">min_temperature</span> AS lowest_temperature,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">EXTRACT</span><span class="er">(</span><span class="ex">MONTH</span> from event_time<span class="kw">)</span> <span class="ex">AS</span> occur_month</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="ex">FROM</span> min_temperature_per_station</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="ex">JOIN</span> <span class="kw">`</span><span class="ex">case-estagio.dadosfera.waves_data</span><span class="kw">`</span> AS wave_data </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">ON</span> wave_data.sea_temperature = min_temperature_per_station.min_temperature</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="ex">AND</span> wave_data.station_id = min_temperature_per_station.station_id</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="ex">GROUP</span> BY station_id, lowest_temperature, occur_month</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Query 1- Max Water Level</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">WITH</span>  max_watter_level AS <span class="er">(</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">SELECT</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="ex">MAX</span><span class="er">(</span><span class="ex">water_level_lat</span><span class="kw">)</span> <span class="ex">AS</span> max_watter_level</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">FROM</span> <span class="kw">`</span><span class="ex">case-estagio.dadosfera.tide_data</span><span class="kw">`</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">WHERE</span> IS_NAN<span class="er">(</span><span class="ex">water_level_lat</span><span class="kw">)</span> <span class="ex">=</span> false /<span class="pp">*</span> Alguns registros não possuiam o valor, por isso removemos os Not a Number <span class="er">(</span><span class="ex">NaN</span><span class="kw">)</span><span class="ex">*/</span>   </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">)</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">SELECT</span> </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">latitude,</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">longitude,</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">max_watter_level</span> AS watter_level,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">EXTRACT</span><span class="er">(</span><span class="ex">MONTH</span> from event_time<span class="kw">)</span> <span class="ex">AS</span> occur_month</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="ex">FROM</span> max_watter_level</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="ex">JOIN</span> <span class="kw">`</span><span class="ex">case-estagio.dadosfera.tide_data</span><span class="kw">`</span> AS tides_data </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">ON</span> tides_data.water_level_lat = max_watter_level.max_watter_level</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+Sendo os resultados encontrados mostrados abaixo:
+<h4 id="resultados-1" class="anchored">
+Resultados Questões 1
+</h4>
+<p><img src="Images/query_biggest_water_level.png" class="img-fluid"></p>
+<p>O maior nível de água acontece na latitude = <code>53.585</code> e longitude = <code>-6.1081</code> no mês de Fevereiro.</p>
+<h4 id="resultados-2" class="anchored">
+Resultados Questões 2
+</h4>
+<p><img src="Images/query_lowest_temperature.png" alt=""></p>
+<p>A menor temperatura para cada uma das regiões é mostrada na imagem acima, e todas elas são no mês de Agosto.</p>
+<h2 id="correlation" class="anchored">
+Correlação
+</h2>
+<p>Finalizando os quesitos básicos, faremos a análise de correlação entre a altura das ondas e temperatura do mar.</p>
+<p>Existem duas possibilidades para analisar a correlação entre duas variáveis: o teste de Spearman, usado para variáveia discretas e o teste de Pearson usado para variáveis contínuas.</p>
+<p>Os dados utilizado para a análise são contínuos, portanto o teste de Pearson é o ideal para indicar como a altura das ondas e a temperatura do mar estão relacionadas.</p>
+<p>Como muitos valores são NaN, faremos a análise apenas para a estação AMETS Berth A Wave Buoy, que contém um conjunto de dados robusto e completo para o cálculo, como mostrado no notebook abaixo.</p>
+<h1>
+Análise de correlação
+</h1>
+<p>Neste arquivo faremos a análise de correlação entre a altura das ondas e a temperatura do oceano.</p>
+<p>Importaremos todas as bibliotecas necessárias:</p>
+<div class="cell" data-tags="[]" data-execution_count="54">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats.stats <span class="im">import</span> pearsonr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Faremos a leitura do arquivo CSV:</p>
+<div class="cell" data-execution_count="45">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">sanny</span><span class="ch">\\</span><span class="st">Documents</span><span class="ch">\\</span><span class="st">dev</span><span class="ch">\\</span><span class="st">ps</span><span class="ch">\\</span><span class="st">dadosfera_case</span><span class="ch">\\</span><span class="st">notebooks</span><span class="ch">\\</span><span class="st">all_waves_data.csv'</span>, </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                 warn_bad_lines<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                 error_bad_lines<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                 encoding<span class="op">=</span> <span class="st">'UTF-16'</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>df.head()</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="45">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>time</th>
+      <th>station_id</th>
+      <th>PeakPeriod</th>
+      <th>PeakDirection</th>
+      <th>UpcrossPeriod</th>
+      <th>SignificantWaveHeight</th>
+      <th>Hmax</th>
+      <th>SeaTemperature</th>
+      <th>MeanCurSpeed</th>
+      <th>MeanCurDirTo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-10.29737</td>
+      <td>54.2753</td>
+      <td>2022-08-11T17:35:00Z</td>
+      <td>AMETS Berth A Wave Buoy</td>
+      <td>10.0</td>
+      <td>285.5</td>
+      <td>7.018</td>
+      <td>176.0</td>
+      <td>NaN</td>
+      <td>16.95</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-10.29737</td>
+      <td>54.2753</td>
+      <td>2022-08-11T18:05:00Z</td>
+      <td>AMETS Berth A Wave Buoy</td>
+      <td>10.0</td>
+      <td>282.7</td>
+      <td>6.452</td>
+      <td>144.0</td>
+      <td>NaN</td>
+      <td>16.95</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-10.29737</td>
+      <td>54.2753</td>
+      <td>2022-08-11T18:35:00Z</td>
+      <td>AMETS Berth A Wave Buoy</td>
+      <td>10.0</td>
+      <td>277.0</td>
+      <td>6.897</td>
+      <td>161.0</td>
+      <td>NaN</td>
+      <td>16.85</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-10.29737</td>
+      <td>54.2753</td>
+      <td>2022-08-11T19:05:00Z</td>
+      <td>AMETS Berth A Wave Buoy</td>
+      <td>10.0</td>
+      <td>285.5</td>
+      <td>7.018</td>
+      <td>170.0</td>
+      <td>NaN</td>
+      <td>16.85</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-10.29737</td>
+      <td>54.2753</td>
+      <td>2022-08-11T19:35:00Z</td>
+      <td>AMETS Berth A Wave Buoy</td>
+      <td>10.0</td>
+      <td>288.3</td>
+      <td>6.780</td>
+      <td>157.0</td>
+      <td>NaN</td>
+      <td>16.80</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Precisamos procurar por valores nulos para que a correlação não tenha um valor enviesado.</p>
+<div class="cell" data-execution_count="46">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>(634, 12)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="101">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>height_temperature <span class="op">=</span> df[[<span class="st">'station_id'</span>,<span class="st">'SignificantWaveHeight'</span>, <span class="st">'SeaTemperature'</span>]]</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>height_temperature.head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="101">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>station_id</th>
+      <th>SignificantWaveHeight</th>
+      <th>SeaTemperature</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AMETS Berth A Wave Buoy</td>
+      <td>176.0</td>
+      <td>16.95</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AMETS Berth A Wave Buoy</td>
+      <td>144.0</td>
+      <td>16.95</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AMETS Berth A Wave Buoy</td>
+      <td>161.0</td>
+      <td>16.85</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AMETS Berth A Wave Buoy</td>
+      <td>170.0</td>
+      <td>16.85</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>AMETS Berth A Wave Buoy</td>
+      <td>157.0</td>
+      <td>16.80</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="102">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>height_temperature.SignificantWaveHeight.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="102">
+<pre><code>479</code></pre>
+</div>
+</div>
+<p>Como de 634 medições 479 são valores nulos, vamos procurar um padrão onde os valores nulos são encontrados.</p>
+<div class="cell" data-execution_count="84">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>filtred_AMETS <span class="op">=</span> height_temperature.query(<span class="st">'station_id == "AMETS Berth A Wave Buoy" '</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>filtred_AMETS.SignificantWaveHeight.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="84">
+<pre><code>0</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="87">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>filtred_BantryBay <span class="op">=</span> height_temperature.query(<span class="st">'station_id == "Bantry Bay" '</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>filtred_BantryBay.SignificantWaveHeight.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="87">
+<pre><code>239</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="89">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>Filtred_SmartWave <span class="op">=</span> height_temperature.query(<span class="st">'station_id == "SmartBay Wave Buoy" '</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>Filtred_SmartWave.SignificantWaveHeight.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="89">
+<pre><code>240</code></pre>
+</div>
+</div>
+<p>Agora vamos trabalhar apenas com a estação AMETS, devido ao N amostral ser mais robusto e completo.</p>
+<div class="cell" data-execution_count="90">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>sns.pairplot(filtred_AMETS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="90">
+<pre><code>&lt;seaborn.axisgrid.PairGrid at 0x1f389e69a00&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Analisys_files/figure-html/cell-10-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Vamos separar as variaveis para calcular o Coeficiente de Pearson:</p>
+<div class="cell" data-execution_count="91">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>SignificantWaveHeight <span class="op">=</span> filtred_AMETS[<span class="st">'SignificantWaveHeight'</span>]</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>SeaTemperature <span class="op">=</span> filtred_AMETS[<span class="st">'SeaTemperature'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="94">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>pearson_coeficient, p_value <span class="op">=</span> pearsonr(SignificantWaveHeight, SeaTemperature)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Coeficiente de Pearson </span><span class="sc">{:0.3}</span><span class="st">'</span>. <span class="bu">format</span>(pearson_coeficient))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Coeficiente de Pearson 0.741</code></pre>
+</div>
+</div>
+<p>Para plotar o gráfico :</p>
+<div class="cell" data-execution_count="98">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>AMETS <span class="op">=</span> filtred_AMETS[[<span class="st">'SignificantWaveHeight'</span>, <span class="st">'SeaTemperature'</span>]]</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>correlation <span class="op">=</span> AMETS.corr()</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>correlation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="98">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>SignificantWaveHeight</th>
+      <th>SeaTemperature</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>SignificantWaveHeight</th>
+      <td>1.000000</td>
+      <td>0.741456</td>
+    </tr>
+    <tr>
+      <th>SeaTemperature</th>
+      <td>0.741456</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="99">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>sns.heatmap(correlation, xticklabels <span class="op">=</span> correlation.columns.values, yticklabels <span class="op">=</span> correlation.columns.values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="99">
+<pre><code>&lt;AxesSubplot:&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Analisys_files/figure-html/cell-14-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>O Coeficiente de Pearson tem valor de 0.741 demonstrando uma forte correlação positiva entre a altura das ondas e a temperatura do mar. Dessa forma, quanto maior a temperatura do mar, maior será a altura das ondas.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
