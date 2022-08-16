@@ -95,5 +95,7 @@ A menor temperatura para cada uma das regiões é mostrada na imagem acima, e to
 
 ![](Images/correlation.png)
 ```
-Após o cálculo de correlação, podemos ver que o Coeficiente de Pearson tem valor de 0.741 demonstrando uma forte correlação positiva entre a altura das ondas e a temperatura do mar. Dessa forma, quanto maior a temperatura do mar, maior será a altura das ondas.
+Após o cálculo de correlação, podemos ver que o Coeficiente de Pearson tem valor de 0.741
+demonstrando uma forte correlação positiva entre a altura das ondas e a temperatura do mar.
+Dessa forma, quanto maior a temperatura do mar, maior será a altura das ondas.
 ```
