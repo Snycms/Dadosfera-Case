@@ -4,9 +4,9 @@
 # Index
  1. [Visão Geral](#visao-geral)
  2. [Modelagem Solução](#modelagem-solucao) 
- 3. [Desenvolvimento](#desenvolvimento)
- 3.1. [Preparaçao dos dados](#preparacao)
- 3.2. [Queries](#queries)
+ 3. [Desenvolvimento](#desenvolvimento)<br>
+ 3.1. [Preparaçao dos dados](#preparacao)<br>
+ 3.2. [Queries](#queries)<br>
  3.3  [Wave lengh Correlation](#correlation)
 
 
